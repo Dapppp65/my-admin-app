@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-// Create Axios Instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
+  baseURL: 'https://my-admin-app-production-a74e.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Request Interceptor: Attach Auth Token if available (for future real backend auth)
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('userToken');
@@ -17,9 +15,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 export default api;
