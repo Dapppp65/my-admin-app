@@ -1,11 +1,7 @@
-[providers]
-node = {}
-
-[phases.setup]
-nixPkgs = ["..."]
+providers = ["node"]
 
 [phases.build]
-cmds = ["echo 'Memaksa untuk melewati build static frontend...'"]
+cmds = ["echo 'Skipping static frontend build...'"]
 
 [start]
 cmd = "node server.js"
