@@ -1,15 +1,14 @@
-// server.js - Entry point untuk json-server di Render
-import jsonServer from 'json-server';
+// server.js - Entry point untuk json-server di Railway
+import { create, router as _router, defaults } from 'json-server'; // 💡 Ubah bagian ini
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const server = jsonServer.create();
-const router = jsonServer.router(join(__dirname, 'db.json'));
-const middlewares = jsonServer.defaults({
-  // Izinkan CORS dari mana saja
+const server = create(); // 💡 Langsung panggil fungsinya
+const router = _router(join(__dirname, 'db.json'));
+const middlewares = defaults({
   cors: true,
   readOnly: false,
 });
